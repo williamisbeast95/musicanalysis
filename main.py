@@ -1,20 +1,16 @@
 import http.client
-import os
-# Path to your local MP3 file
-file_path = 'audio/song.mp3'
-# Read the MP3 file and encode it to base64
-with open(file_path, "rb") as mp3_file:
-    file_content = mp3_file.read()
+
+conn = http.client.HTTPSConnection("sonoteller-ai1.p.rapidapi.com")
+
+payload = "{\"file\":\"https://storage.googleapis.com/musikame-files/thefatrat-mayday-feat-laura-brehm-lyriclyrics-videocopyright-free-music.mp3\"}"
 
 headers = {
-    'x-rapidapi-key': os.getenv('Sonoteller_API_KEY'),
+    'x-rapidapi-key': "4e1056282cmsh8fdbd0c320caf21p1e1b3cjsnd7c046c55c93",
     'x-rapidapi-host': "sonoteller-ai1.p.rapidapi.com",
     'Content-Type': "application/json"
 }
 
-# Send the request
-conn = http.client.HTTPSConnection("sonoteller-ai1.p.rapidapi.com")
-conn.request("POST", "/music", body=file_content, headers=headers)
+conn.request("POST", "/music", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
