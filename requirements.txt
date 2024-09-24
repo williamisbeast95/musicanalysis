@@ -1,5 +1,0 @@
-librosa
-pydub
-SpeechRecognition
-madmom
-essentia
